@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@css/superusuario.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <children>
+            <Label fx:id="headerTitle" text="Sistema Veterinaria - Panel de Administración" />
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Agendar Citas">
+               <content>
+                  <BorderPane>
+                     <left>
+                        <VBox spacing="10.0" style="-fx-background-color: #f8f8f8;" BorderPane.alignment="CENTER">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <children>
+                              <Label styleClass="tab-label" text="Nueva Cita">
+                                 <textFill>
+                                    <LinearGradient endX="1.0" endY="1.0" startX="0.7129337531911085">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color red="1.0" green="1.0" blue="1.0" />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </LinearGradient>
+                                 </textFill></Label>
+                              <ComboBox fx:id="comboPropietario" prefWidth="200.0" promptText="Seleccionar Propietario" />
+                              <ComboBox fx:id="comboMascota" prefWidth="200.0" promptText="Seleccionar Mascota" />
+                              <ComboBox fx:id="comboVeterinario" prefWidth="200.0" promptText="Seleccionar Veterinario" />
+                              <DatePicker fx:id="fechaCita" prefWidth="200.0" promptText="Fecha de Cita" />
+                              <ComboBox fx:id="comboHorario" prefWidth="200.0" promptText="Horario Disponible" />
+                              <TextField fx:id="txtMotivo" prefWidth="200.0" promptText="Motivo de la Consulta" />
+                              <Button mnemonicParsing="false" text="Agendar Cita" />
+                           </children>
+                        </VBox>
+                     </left>
+                     <center>
+                        <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                          <columns>
+                            <TableColumn prefWidth="100.0" text="Fecha" />
+                            <TableColumn prefWidth="100.0" text="Hora" />
+                            <TableColumn prefWidth="150.0" text="Veterinario" />
+                            <TableColumn prefWidth="150.0" text="Mascota" />
+                          </columns>
+                           <BorderPane.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </BorderPane.margin>
+                        </TableView>
+                     </center>
+                  </BorderPane>
+               </content>
+          </Tab>
+          <Tab text="Gestionar Mascotas">
+               <content>
+                  <BorderPane>
+                     <left>
+                        <VBox spacing="10.0" style="-fx-background-color: #f8f8f8;">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <children>
+                              <Label styleClass="form-title" text="Nueva Mascota" />
+                              <Label styleClass="form-label" text="Propietario:" />
+                              <ComboBox fx:id="comboPropietarioMascota" prefWidth="200.0" promptText="Seleccionar Propietario" />
+                              <Label styleClass="form-label" text="Nombre:" />
+                              <TextField fx:id="txtNombreMascota" promptText="Nombre" />
+                              <Label styleClass="form-label" text="Especie:" />
+                              <TextField fx:id="txtEspecie" promptText="Especie" />
+                              <Label styleClass="form-label" text="Raza:" />
+                              <TextField fx:id="txtRaza" promptText="Raza" />
+                              <Label styleClass="form-label" text="Edad:" />
+                              <TextField fx:id="txtEdad" promptText="Edad" />
+                              <Button mnemonicParsing="false" text="Registrar Mascota" />
+                           </children>
+                        </VBox>
+                     </left>
+                     <center>
+                        <TableView prefHeight="200.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn prefWidth="150.0" text="Nombre" />
+                            <TableColumn prefWidth="100.0" text="Especie" />
+                            <TableColumn prefWidth="100.0" text="Raza" />
+                            <TableColumn prefWidth="150.0" text="Propietario" />
+                          </columns>
+                           <BorderPane.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </BorderPane.margin>
+                        </TableView>
+                     </center>
+                  </BorderPane>
+               </content>
+          </Tab>
+          <Tab text="Gestionar Propietarios">
+               <content>
+                  <BorderPane>
+                     <left>
+                        <VBox spacing="10.0" style="-fx-background-color: #f8f8f8;">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <children>
+                              <Label text="Nuevo Propietario" />
+                              <TextField fx:id="txtCedula" promptText="Cédula" />
+                              <TextField fx:id="txtNombrePropietario" promptText="Nombre Completo" />
+                              <TextField fx:id="txtTelefono" promptText="Teléfono" />
+                              <TextField fx:id="txtDireccion" promptText="Dirección" />
+                              <TextField fx:id="txtEmail" promptText="Email" />
+                              <Button mnemonicParsing="false" text="Registrar Propietario" />
+                           </children>
+                        </VBox>
+                     </left>
+                     <center>
+                        <TableView prefHeight="200.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn prefWidth="100.0" text="Cédula" />
+                            <TableColumn prefWidth="150.0" text="Nombre" />
+                            <TableColumn prefWidth="100.0" text="Teléfono" />
+                            <TableColumn prefWidth="150.0" text="Email" />
+                          </columns>
+                           <BorderPane.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </BorderPane.margin>
+                        </TableView>
+                     </center>
+                  </BorderPane>
+               </content>
+          </Tab>
+          <Tab text="Gestionar Veterinarios">
+               <content>
+                  <BorderPane>
+                     <left>
+                        <VBox spacing="10.0" style="-fx-background-color: #f8f8f8;">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <children>
+                              <Label text="Nuevo Veterinario" />
+                              <TextField fx:id="txtCedulaVet" promptText="Cédula" />
+                              <TextField fx:id="txtNombreVet" promptText="Nombre Completo" />
+                              <TextField fx:id="txtEspecialidad" promptText="Especialidad" />
+                              <TextField fx:id="txtTelefonoVet" promptText="Teléfono" />
+                              <TextField fx:id="txtEmailVet" promptText="Email" />
+                              <Button mnemonicParsing="false" text="Registrar Veterinario" />
+                           </children>
+                        </VBox>
+                     </left>
+                     <center>
+                        <TableView prefHeight="200.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn prefWidth="100.0" text="Cédula" />
+                            <TableColumn prefWidth="150.0" text="Nombre" />
+                            <TableColumn prefWidth="150.0" text="Especialidad" />
+                            <TableColumn prefWidth="100.0" text="Teléfono" />
+                          </columns>
+                           <BorderPane.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </BorderPane.margin>
+                        </TableView>
+                     </center>
+                  </BorderPane>
+               </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
