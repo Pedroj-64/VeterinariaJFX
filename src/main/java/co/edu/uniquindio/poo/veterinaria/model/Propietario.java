@@ -11,5 +11,6 @@ public class Propietario {
     String iD;
     String telefono;
     String direccion;
+    String email;
 
 }
