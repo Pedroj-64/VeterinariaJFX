@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox id="menu-veterinario-container" spacing="20" stylesheets="@css/menuVeterinario.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="co.edu.uniquindio.poo.veterinaria.controller.VeterinarioViewController">
+<HBox id="menu-veterinario-container" spacing="20" stylesheets="@css/menuVeterinario.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="co.edu.uniquindio.poo.veterinaria.viewController.MenuVeterinarioViewController">
     
     <!-- Panel lateral izquierdo con lista de mascotas -->
     <VBox styleClass="side-panel">
