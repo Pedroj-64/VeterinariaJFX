@@ -25,6 +25,11 @@
          </padding>
          <children>
             <Label fx:id="headerTitle" text="Sistema Veterinaria - Panel de Administración" />
+            <Button fx:id="btn_volver" mnemonicParsing="false" onAction="#volverMenu" text=" Volver">
+               <HBox.margin>
+                  <Insets left="45.0" />
+               </HBox.margin>
+            </Button>
          </children>
       </HBox>
    </top>
@@ -60,20 +65,20 @@
                               <ComboBox fx:id="comboPropietario" prefWidth="200.0" promptText="Seleccionar Propietario" />
                               <ComboBox fx:id="comboMascota" prefWidth="200.0" promptText="Seleccionar Mascota" />
                               <ComboBox fx:id="comboVeterinario" prefWidth="200.0" promptText="Seleccionar Veterinario" />
-                              <DatePicker fx:id="fechaCita" prefWidth="200.0" promptText="Fecha de Cita" />
+                              <DatePicker fx:id="date_Cita" prefWidth="200.0" promptText="Fecha de Cita" />
                               <ComboBox fx:id="comboHorario" prefWidth="200.0" promptText="Horario Disponible" />
                               <TextField fx:id="txtMotivo" prefWidth="200.0" promptText="Motivo de la Consulta" />
-                              <Button mnemonicParsing="false" text="Agendar Cita" />
+                              <Button fx:id="btn_agendarCita" mnemonicParsing="false" onAction="#agendarCita" text="Agendar Cita" />
                            </children>
                         </VBox>
                      </left>
                      <center>
-                        <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                        <TableView fx:id="tbl_citas" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                           <columns>
-                            <TableColumn prefWidth="100.0" text="Fecha" />
-                            <TableColumn prefWidth="100.0" text="Hora" />
-                            <TableColumn prefWidth="150.0" text="Veterinario" />
-                            <TableColumn prefWidth="150.0" text="Mascota" />
+                            <TableColumn fx:id="tbc_fecha" prefWidth="100.0" text="Fecha" />
+                            <TableColumn fx:id="tbc_hora" prefWidth="100.0" text="Hora" />
+                            <TableColumn fx:id="tbc_veterinario" prefWidth="150.0" text="Veterinario" />
+                            <TableColumn fx:id="tbc_Mascota" prefWidth="150.0" text="Mascota" />
                           </columns>
                            <BorderPane.margin>
                               <Insets left="10.0" right="10.0" />
@@ -103,17 +108,17 @@
                               <TextField fx:id="txtRaza" promptText="Raza" />
                               <Label styleClass="form-label" text="Edad:" />
                               <TextField fx:id="txtEdad" promptText="Edad" />
-                              <Button mnemonicParsing="false" text="Registrar Mascota" />
+                              <Button fx:id="btn_registrarMascota" mnemonicParsing="false" onAction="#registrarMascotas" text="Registrar Mascota" />
                            </children>
                         </VBox>
                      </left>
                      <center>
-                        <TableView prefHeight="200.0" prefWidth="200.0">
+                        <TableView fx:id="tbl_mascota" prefHeight="200.0" prefWidth="200.0">
                           <columns>
-                            <TableColumn prefWidth="150.0" text="Nombre" />
-                            <TableColumn prefWidth="100.0" text="Especie" />
-                            <TableColumn prefWidth="100.0" text="Raza" />
-                            <TableColumn prefWidth="150.0" text="Propietario" />
+                            <TableColumn fx:id="tbc_nombre" prefWidth="150.0" text="Nombre" />
+                            <TableColumn fx:id="tbc_especie" prefWidth="100.0" text="Especie" />
+                            <TableColumn fx:id="tbc_raza" prefWidth="100.0" text="Raza" />
+                            <TableColumn fx:id="tbc_propietario" prefWidth="150.0" text="Propietario" />
                           </columns>
                            <BorderPane.margin>
                               <Insets left="10.0" right="10.0" />
@@ -138,17 +143,17 @@
                               <TextField fx:id="txtTelefono" promptText="Teléfono" />
                               <TextField fx:id="txtDireccion" promptText="Dirección" />
                               <TextField fx:id="txtEmail" promptText="Email" />
-                              <Button mnemonicParsing="false" text="Registrar Propietario" />
+                              <Button fx:id="btn_registrarPropietario" mnemonicParsing="false" onAction="#registrarPropietario" text="Registrar Propietario" />
                            </children>
                         </VBox>
                      </left>
                      <center>
-                        <TableView prefHeight="200.0" prefWidth="200.0">
+                        <TableView fx:id="tbl_propietarios" prefHeight="200.0" prefWidth="200.0">
                           <columns>
-                            <TableColumn prefWidth="100.0" text="Cédula" />
-                            <TableColumn prefWidth="150.0" text="Nombre" />
-                            <TableColumn prefWidth="100.0" text="Teléfono" />
-                            <TableColumn prefWidth="150.0" text="Email" />
+                            <TableColumn fx:id="tbc_cedula" prefWidth="100.0" text="Cédula" />
+                            <TableColumn fx:id="tbc_nombrePropietarios" prefWidth="150.0" text="Nombre" />
+                            <TableColumn fx:id="tbc_telefono" prefWidth="100.0" text="Teléfono" />
+                            <TableColumn fx:id="tbc_email" prefWidth="150.0" text="Email" />
                           </columns>
                            <BorderPane.margin>
                               <Insets left="10.0" right="10.0" />
@@ -173,17 +178,17 @@
                               <TextField fx:id="txtEspecialidad" promptText="Especialidad" />
                               <TextField fx:id="txtTelefonoVet" promptText="Teléfono" />
                               <TextField fx:id="txtEmailVet" promptText="Email" />
-                              <Button mnemonicParsing="false" text="Registrar Veterinario" />
+                              <Button fx:id="btn_registrarVeterinaria" mnemonicParsing="false" onAction="#registrarVeterinaria" text="Registrar Veterinario" />
                            </children>
                         </VBox>
                      </left>
                      <center>
                         <TableView prefHeight="200.0" prefWidth="200.0">
                           <columns>
-                            <TableColumn prefWidth="100.0" text="Cédula" />
-                            <TableColumn prefWidth="150.0" text="Nombre" />
-                            <TableColumn prefWidth="150.0" text="Especialidad" />
-                            <TableColumn prefWidth="100.0" text="Teléfono" />
+                            <TableColumn fx:id="tbc_cedulaVeterinario" prefWidth="100.0" text="Cédula" />
+                            <TableColumn fx:id="tbc_nombreVeterinario" prefWidth="150.0" text="Nombre" />
+                            <TableColumn fx:id="tbc_Especialidad" prefWidth="150.0" text="Especialidad" />
+                            <TableColumn fx:id="tbc_telefonoVeterinario" prefWidth="100.0" text="Teléfono" />
                           </columns>
                            <BorderPane.margin>
                               <Insets left="10.0" right="10.0" />

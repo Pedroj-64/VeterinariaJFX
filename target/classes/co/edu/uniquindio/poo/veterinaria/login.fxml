@@ -18,7 +18,7 @@
             <Label fx:id="lbl_iniciarSesion" styleClass="login-text" text="Inicio de sesión" />
             <TextField fx:id="txt_usuario" promptText="Usuario" styleClass="input-field" />
             <PasswordField fx:id="txt_contraseña" promptText="Contraseña" styleClass="input-field" />
-            <Button fx:id="btn_Inicio" mnemonicParsing="false" styleClass="login-button" text="Iniciar Sesión" />
+            <Button fx:id="btn_Inicio" mnemonicParsing="false" onAction="#iniciarSesion" styleClass="login-button" text="Iniciar Sesión" />
          </children>
          <padding>
             <Insets bottom="20.0" left="40.0" right="40.0" top="20.0" />
