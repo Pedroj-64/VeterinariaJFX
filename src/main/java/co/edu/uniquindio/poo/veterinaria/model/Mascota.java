@@ -1,13 +1,14 @@
 package co.edu.uniquindio.poo.veterinaria.model;
-
 import lombok.*;
+
 @Getter
 @Setter
 @AllArgsConstructor
 
-public class Veterinario {
+public class Mascota {
 
     String nombre;
-    String idLicencia;
+    byte edad;
+    String iDVeterinaria;
 
 }

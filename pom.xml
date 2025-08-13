@@ -19,9 +19,22 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>13</version>
-        </dependency>
+        </dependency> 
+	<dependency>
+		<groupId>org.projectlombok</groupId>
+		<artifactId>lombok</artifactId>
+		<version>1.18.38</version>
+		<scope>provided</scope>
+	</dependency>
     </dependencies>
     <build>
+            <!-- Lombok para anotaciones automáticas -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.32</version>
+                <scope>provided</scope>
+            </dependency>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
