@@ -16,7 +16,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        // Inicializar la escena principal usando AppController
+  
         Parent root = AppController.loadFXML("login");
         Scene scene = new Scene(root, 640, 480);
         stage.setScene(scene);
