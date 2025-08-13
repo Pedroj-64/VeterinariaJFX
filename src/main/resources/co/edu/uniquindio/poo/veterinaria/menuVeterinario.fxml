@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox id="menu-veterinario-container" spacing="20" stylesheets="@css/menuVeterinario.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="co.edu.uniquindio.poo.veterinaria.controller.VeterinarioViewController">
+    
+    <!-- Panel lateral izquierdo con lista de mascotas -->
+    <VBox styleClass="side-panel">
+      <Button fx:id="btn_volver" minWidth="117.0" mnemonicParsing="false" onAction="#volver" prefHeight="44.0" prefWidth="117.0" styleClass="login-button" text="Volver" />
+        <Label styleClass="title-text" text="Mascotas del día" />
+        <ListView fx:id="listaMascotas" styleClass="list-view" VBox.vgrow="ALWAYS" />
+    </VBox>
+    
+    <!-- Contenido principal - Formulario de consulta -->
+    <VBox styleClass="main-content" HBox.hgrow="ALWAYS">
+        <Label styleClass="title-text" text="Datos de la consulta" />
+        
+        <!-- Campos no editables -->
+        <Label styleClass="form-label" text="Dueño:" />
+        <TextField fx:id="txtDueno" editable="false" styleClass="form-field" />
+        
+        <Label styleClass="form-label" text="Edad de la mascota:" />
+        <TextField fx:id="txtEdad" editable="false" styleClass="form-field" />
+        
+        <Label styleClass="form-label" text="Motivo de consulta:" />
+        <TextField fx:id="txtMotivo" editable="false" styleClass="form-field" />
+        
+        <!-- Campos editables -->
+        <Label styleClass="form-label" text="Diagnóstico:" />
+        <TextArea fx:id="txtDiagnostico" prefRowCount="3" styleClass="text-area" wrapText="true" />
+        
+        <Label styleClass="form-label" text="Tratamiento:" />
+        <TextArea fx:id="txtTratamiento" prefRowCount="3" styleClass="text-area" wrapText="true" />
+      <Button fx:id="btn_enviarDIa" mnemonicParsing="false" onAction="#enviarDiagnostico" styleClass="login-button" text="Enviar">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets left="280.0" top="10.0" />
+         </VBox.margin>
+      </Button>
+    </VBox>
+
+</HBox>
