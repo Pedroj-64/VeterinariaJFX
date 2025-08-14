@@ -1,6 +1,7 @@
 package co.edu.uniquindio.poo.veterinaria.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.*;
@@ -36,6 +37,16 @@ public class Veterinaria {
             citasDelDia.add(consulta);
         }
     }
-    return (list<Consulta>) citasDelDia; //Devulve las citas del día.
+    return citasDelDia; //Devulve las citas del día.
+    }
+
+        public List<Consulta> obtenerHistorialPorMascota(String idVeterinaria) {
+        List<Consulta> historial = new ArrayList<>();
+        for (Consulta consulta : consultas) { // Recorre todas las consultas
+            if (consulta.getMascota().getIdVeterinaria().equalsIgnoreCase(idVeterinaria)) {
+                historial.add(consulta); // Agrega si el ID coincide
+            }
+        }
+        return historial; // Devuelve todas las consultas encontradas
     }
 }
