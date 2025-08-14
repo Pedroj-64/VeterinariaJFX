@@ -193,7 +193,7 @@ public class MenuVeterinarioViewController {
 
     @FXML
     void volver(ActionEvent event) {
-        App.loadScene("login", 640, 480);
+        App.loadScene("login", 800, 600);
     }
 
 }

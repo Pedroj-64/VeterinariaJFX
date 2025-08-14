@@ -639,7 +639,7 @@ public class SuperUsuarioViewController {
 
     @FXML
     void volverMenu(ActionEvent event) {
-        App.loadScene("login", 640, 480);
+        App.loadScene("login", 800, 600);
     }
 
 
