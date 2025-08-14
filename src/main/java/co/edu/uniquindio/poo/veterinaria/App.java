@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import co.edu.uniquindio.poo.veterinaria.model.Veterinaria;
 
 import java.io.IOException;
 
@@ -33,12 +34,11 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
-
-        /**
+    /**
      * Carga y establece una nueva escena en la ventana principal.
      * 
-     * @param fxml El nombre del archivo FXML.
-     * @param width El ancho de la nueva escena.
+     * @param fxml   El nombre del archivo FXML.
+     * @param width  El ancho de la nueva escena.
      * @param height La altura de la nueva escena.
      */
     public static void loadScene(String fxml, double width, double height) {
@@ -49,18 +49,19 @@ public class App extends Application {
             scene.getWindow().setHeight(height);
 
             // Agregar la escena al historial
-            
+
         } catch (IOException e) {
-            showAlert("Error al cambiar la vista", "No se pudo cargar el archivo FXML: " + e.getMessage(), Alert.AlertType.ERROR);
+            showAlert("Error al cambiar la vista", "No se pudo cargar el archivo FXML: " + e.getMessage(),
+                    Alert.AlertType.ERROR);
         }
     }
 
-        /**
+    /**
      * Muestra una alerta con el mensaje especificado.
      * 
-     * @param title El título de la alerta.
+     * @param title   El título de la alerta.
      * @param message El contenido del mensaje.
-     * @param type El tipo de alerta.
+     * @param type    El tipo de alerta.
      */
     public static void showAlert(String title, String message, AlertType type) {
         Alert alert = new Alert(type); // Crear la alerta
@@ -73,14 +74,15 @@ public class App extends Application {
     /**
      * Muestra una alerta y redirige a una nueva escena al cerrar la alerta.
      * 
-     * @param title El título de la alerta.
+     * @param title   El título de la alerta.
      * @param message El contenido del mensaje.
-     * @param type El tipo de alerta.
-     * @param fxml El nombre del archivo FXML de la nueva escena.
-     * @param width El ancho de la nueva escena.
-     * @param height La altura de la nueva escena.
+     * @param type    El tipo de alerta.
+     * @param fxml    El nombre del archivo FXML de la nueva escena.
+     * @param width   El ancho de la nueva escena.
+     * @param height  La altura de la nueva escena.
      */
-    public static void showAlertAndRedirect(String title, String message, AlertType type, String fxml, double width, double height) {
+    public static void showAlertAndRedirect(String title, String message, AlertType type, String fxml, double width,
+            double height) {
         Alert alert = new Alert(type); // Crear la alerta
         alert.setTitle(title); // Establecer el título
         alert.setHeaderText(null); // Sin encabezado
@@ -93,6 +95,14 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+    /**
+     * Obtiene la instancia única de la veterinaria.
+     * @return La instancia de Veterinaria
+     */
+    public static Veterinaria getVeterinaria() {
+        return Veterinaria.getInstance();
     }
 
 }

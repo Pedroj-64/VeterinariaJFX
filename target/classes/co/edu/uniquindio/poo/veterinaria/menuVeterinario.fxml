@@ -38,7 +38,7 @@
         
         <Label styleClass="form-label" text="Tratamiento:" />
         <TextArea fx:id="txtTratamiento" prefRowCount="3" styleClass="text-area" wrapText="true" />
-      <Button fx:id="btn_enviarDIa" mnemonicParsing="false" onAction="#enviarDiagnostico" styleClass="login-button" text="Enviar">
+      <Button fx:id="btn_enviarDia" mnemonicParsing="false" onAction="#enviarDiagnostico" styleClass="login-button" text="Enviar">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>

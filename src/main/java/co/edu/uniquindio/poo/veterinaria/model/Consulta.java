@@ -1,23 +1,23 @@
 package co.edu.uniquindio.poo.veterinaria.model;
-import java.time.LocalDate;
 
+import java.time.LocalDate;
 import lombok.*;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
-
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Consulta {
+    private Cita cita;
+    private String diagnostico;
+    private String tratamiento;
+    private LocalDate fecha;
 
-    LocalDate fecha;
-    LocalDate hora;
-    String Diagnostico;
-    String Tratamiento;
-    Mascota mascota;
-    Veterinario veterinario;
-    public Object getResumen() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getResumen'");
+    public String getResumen() {
+        return String.format("Consulta del %s%nMascota: %s%nVeterinario: %s%nDiagnóstico: %s%nTratamiento: %s",
+            fecha, cita.getMascota().getNombre(), 
+            cita.getVeterinario().getNombre(),
+            diagnostico, tratamiento);
     }
-
 }
