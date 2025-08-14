@@ -9,5 +9,9 @@ public class Veterinario {
 
     String nombre;
     String idLicencia;
+    String especialidad;
+    String telefono;
 
+
+    
 }
