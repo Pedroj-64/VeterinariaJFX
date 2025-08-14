@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox id="menu-veterinario-container" spacing="20" stylesheets="@css/menuVeterinario.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="co.edu.uniquindio.poo.veterinaria.viewController.MenuVeterinarioViewController">
+<HBox id="menu-veterinario-container" spacing="20" stylesheets="@css/menuVeterinario.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.veterinaria.viewController.MenuVeterinarioViewController">
     
     <!-- Panel lateral izquierdo con lista de mascotas -->
     <VBox styleClass="side-panel">
@@ -38,13 +38,18 @@
         
         <Label styleClass="form-label" text="Tratamiento:" />
         <TextArea fx:id="txtTratamiento" prefRowCount="3" styleClass="text-area" wrapText="true" />
-      <Button fx:id="btn_enviarDia" mnemonicParsing="false" onAction="#enviarDiagnostico" styleClass="login-button" text="Enviar">
+      <Button fx:id="btn_enviarDiagnostico" mnemonicParsing="false" onAction="#enviarDiagnostico" styleClass="login-button" text="Enviar">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <VBox.margin>
             <Insets left="280.0" top="10.0" />
          </VBox.margin>
+      </Button>
+      <Button fx:id="btn_descargarHistorial" mnemonicParsing="false" onAction="#descargarHistorial" styleClass="login-button" text="Historial">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </Button>
     </VBox>
 

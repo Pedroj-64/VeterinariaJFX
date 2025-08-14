@@ -170,12 +170,13 @@ public class SuperUsuarioController {
         Veterinario veterinario = Veterinario.builder()
             .cedula(cedula)
             .nombre(nombre)
-            .especialidad(especialidad.getDescripcion())
+            .especialidad(especialidad.name()) // Usamos name() en lugar de toString()
             .telefono(telefono)
             .email(email)
             .build();
         
         veterinaria.registrarVeterinario(veterinario);
+        System.out.println("Veterinario registrado: " + veterinario.getNombre() + " - " + veterinario.getEspecialidad());
     }
 
     /**
@@ -217,25 +218,35 @@ public class SuperUsuarioController {
     }
 
     public java.util.List<Propietario> obtenerPropietarios() {
-        return veterinaria.getPropietarios();
+        var propietarios = veterinaria.getPropietarios();
+        System.out.println("Propietarios obtenidos: " + propietarios.size());
+        return new java.util.ArrayList<>(propietarios);
     }
 
     public java.util.List<Mascota> obtenerMascotas() {
-        return veterinaria.getMascotas();
+        var mascotas = veterinaria.getMascotas();
+        System.out.println("Mascotas obtenidas: " + mascotas.size());
+        return new java.util.ArrayList<>(mascotas);
     }
 
     public java.util.List<Mascota> obtenerMascotasPorPropietario(Propietario propietario) {
         if (propietario == null) {
             throw new IllegalArgumentException("El propietario no puede ser nulo");
         }
-        return propietario.getMascotas();
+        var mascotas = propietario.getMascotas();
+        System.out.println("Mascotas obtenidas para propietario " + propietario.getNombre() + ": " + mascotas.size());
+        return new java.util.ArrayList<>(mascotas);
     }
 
     public java.util.List<Veterinario> obtenerVeterinarios() {
-        return veterinaria.getVeterinarios();
+        var veterinarios = veterinaria.getVeterinarios();
+        System.out.println("Veterinarios obtenidos: " + veterinarios.size());
+        return new java.util.ArrayList<>(veterinarios);
     }
 
     public java.util.List<Cita> obtenerCitas() {
-        return veterinaria.getCitas();
+        var citas = veterinaria.getCitas();
+        System.out.println("Citas obtenidas: " + citas.size());
+        return new java.util.ArrayList<>(citas);
     }
 }

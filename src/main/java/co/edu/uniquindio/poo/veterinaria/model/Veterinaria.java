@@ -143,6 +143,10 @@ public class Veterinaria {
     }
 
     // Métodos de consulta
+    public List<Cita> obtenerCitas() {
+        return new ArrayList<>(citas);
+    }
+
     public List<Cita> obtenerCitasPorFecha(LocalDate fecha) {
         return citas.stream()
                 .filter(c -> c.getFechaHora().toLocalDate().equals(fecha))

@@ -175,7 +175,7 @@
                               <Label text="Nuevo Veterinario" />
                               <TextField fx:id="txtCedulaVet" promptText="Cédula" />
                               <TextField fx:id="txtNombreVet" promptText="Nombre Completo" />
-                              <TextField fx:id="txtEspecialidad" promptText="Especialidad" />
+                              <ComboBox fx:id="comboEspecialidad" prefHeight="25.0" prefWidth="178.0" promptText="Especialidad" />
                               <TextField fx:id="txtTelefonoVet" promptText="Teléfono" />
                               <TextField fx:id="txtEmailVet" promptText="Email" />
                               <Button fx:id="btn_registrarVeterinaria" mnemonicParsing="false" onAction="#registrarVeterinaria" text="Registrar Veterinario" />
@@ -183,7 +183,7 @@
                         </VBox>
                      </left>
                      <center>
-                        <TableView prefHeight="200.0" prefWidth="200.0">
+                        <TableView fx:id="tbl_veterinarios" prefHeight="200.0" prefWidth="200.0">
                           <columns>
                             <TableColumn fx:id="tbc_cedulaVeterinario" prefWidth="100.0" text="Cédula" />
                             <TableColumn fx:id="tbc_nombreVeterinario" prefWidth="150.0" text="Nombre" />

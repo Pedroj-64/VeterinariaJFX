@@ -90,7 +90,7 @@ public class App extends Application {
 
         // Redirigir a una nueva escena al cerrar la alerta
         alert.setOnHidden(evt -> loadScene(fxml, width, height));
-        alert.show(); // Mostrar la alerta
+        alert.show(); // Mostrar la alertan
     }
 
     public static void main(String[] args) {
@@ -99,6 +99,7 @@ public class App extends Application {
 
     /**
      * Obtiene la instancia única de la veterinaria.
+     * 
      * @return La instancia de Veterinaria
      */
     public static Veterinaria getVeterinaria() {

@@ -1,5 +1,10 @@
 package co.edu.uniquindio.poo.veterinaria.viewController;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.LocalDate;
+
 import co.edu.uniquindio.poo.veterinaria.App;
 import co.edu.uniquindio.poo.veterinaria.controller.MenuVeterinarioController;
 import co.edu.uniquindio.poo.veterinaria.model.Mascota;
@@ -10,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -18,6 +24,9 @@ public class MenuVeterinarioViewController {
 
     @FXML
     private Button btn_enviarDiagnostico;
+
+    @FXML
+    private Button btn_descargarHistorial;
 
     @FXML
     private Button btn_volver;
@@ -50,12 +59,12 @@ public class MenuVeterinarioViewController {
         try {
             // Obtener el veterinario actual desde App
             Veterinario veterinarioActual = App.getVeterinaria().getVeterinarios().stream()
-                .filter(v -> v.getCedula().equals("123")) // TODO: Obtener la cédula del veterinario que inició sesión
-                .findFirst()
-                .orElseThrow(() -> new IllegalStateException("No se encontró el veterinario actual"));
+                    .filter(v -> v.getCedula().equals("123"))
+                    .findFirst()
+                    .orElseThrow(() -> new IllegalStateException("No se encontró el veterinario actual"));
 
             controller = MenuVeterinarioController.getInstance(veterinarioActual);
-            
+
             configurarListaMascotas();
             cargarDatos();
         } catch (Exception e) {
@@ -63,9 +72,40 @@ public class MenuVeterinarioViewController {
         }
     }
 
+    @FXML
+    void descargarHistorial(ActionEvent event) {
+        try {
+            // Validar que haya una mascota seleccionada
+            Mascota mascotaSeleccionada = listaMascotas.getSelectionModel().getSelectedItem();
+            if (mascotaSeleccionada == null) {
+                App.showAlert("Error", "Debe seleccionar una mascota", AlertType.ERROR);
+                return;
+            }
+
+            // Generar el historial médico
+            String historial = controller.generarHistorialMedico(mascotaSeleccionada);
+
+            // Crear el nombre del archivo
+            String nombreArchivo = String.format("historial_%s_%s.txt", 
+                mascotaSeleccionada.getNombre().replaceAll("\\s+", "_").toLowerCase(),
+                LocalDate.now());
+
+            // Crear y escribir el archivo
+            Path path = Paths.get(System.getProperty("user.home"), "Downloads", nombreArchivo);
+            Files.writeString(path, historial);
+
+            App.showAlert("Éxito", 
+                "Historial descargado exitosamente en: " + path.toString(), 
+                AlertType.INFORMATION);
+
+        } catch (Exception e) {
+            App.showAlert("Error", "Error al descargar el historial: " + e.getMessage(), AlertType.ERROR);
+        }
+    }
+
     private void configurarListaMascotas() {
         // Configurar la visualización de las mascotas en la lista
-        listaMascotas.setCellFactory(param -> new javafx.scene.control.ListCell<Mascota>() {
+        listaMascotas.setCellFactory(param -> new ListCell<Mascota>() {
             @Override
             protected void updateItem(Mascota item, boolean empty) {
                 super.updateItem(item, empty);
@@ -90,7 +130,7 @@ public class MenuVeterinarioViewController {
         txtNombreMascota.setText(mascota.getNombre());
         txtDueno.setText(mascota.getPropietario().getNombre());
         txtEdad.setText(String.valueOf(mascota.getEdad()));
-        
+
         // Obtener el motivo de la cita
         controller.obtenerCitaMascota(mascota).ifPresent(cita -> {
             txtMotivo.setText(cita.getMotivo());
@@ -128,14 +168,14 @@ public class MenuVeterinarioViewController {
 
             // Registrar la consulta a través del controlador
             controller.registrarConsulta(mascotaSeleccionada, diagnostico, tratamiento);
-            
+
             // Limpiar campos y actualizar lista
             limpiarCampos();
             cargarDatos();
-            
+
             // Mostrar mensaje de éxito
             App.showAlert("Éxito", "Consulta registrada correctamente", AlertType.INFORMATION);
-            
+
         } catch (Exception e) {
             App.showAlert("Error", e.getMessage(), AlertType.ERROR);
         }

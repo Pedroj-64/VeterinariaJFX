@@ -66,4 +66,36 @@ public class MenuVeterinarioController {
             .filter(cita -> cita.getMascota().equals(mascota))
             .findFirst();
     }
+
+    /**
+     * Genera el historial médico de una mascota como texto
+     */
+    public String generarHistorialMedico(Mascota mascota) {
+        StringBuilder historial = new StringBuilder();
+        historial.append("HISTORIAL MÉDICO\n");
+        historial.append("================\n\n");
+        historial.append("Mascota: ").append(mascota.getNombre()).append("\n");
+        historial.append("Especie: ").append(mascota.getEspecie()).append("\n");
+        historial.append("Raza: ").append(mascota.getRaza()).append("\n");
+        historial.append("Edad: ").append(mascota.getEdad()).append(" años\n");
+        historial.append("Propietario: ").append(mascota.getPropietario().getNombre()).append("\n\n");
+        historial.append("CONSULTAS\n");
+        historial.append("=========\n\n");
+
+        // Obtener todas las citas con consulta de la mascota
+        veterinaria.obtenerCitas().stream()
+            .filter(cita -> cita.getMascota().equals(mascota) && cita.getConsulta() != null)
+            .sorted((c1, c2) -> c2.getFechaHora().compareTo(c1.getFechaHora())) // Ordenar por fecha descendente
+            .forEach(cita -> {
+                Consulta consulta = cita.getConsulta();
+                historial.append("Fecha: ").append(consulta.getFecha()).append("\n");
+                historial.append("Veterinario: ").append(cita.getVeterinario().getNombre()).append("\n");
+                historial.append("Motivo: ").append(cita.getMotivo()).append("\n");
+                historial.append("Diagnóstico: ").append(consulta.getDiagnostico()).append("\n");
+                historial.append("Tratamiento: ").append(consulta.getTratamiento()).append("\n");
+                historial.append("\n---\n\n");
+            });
+
+        return historial.toString();
+    }
 }
