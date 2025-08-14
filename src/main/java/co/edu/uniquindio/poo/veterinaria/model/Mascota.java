@@ -9,6 +9,9 @@ public class Mascota {
 
     String nombre;
     byte edad;
-    String iDVeterinaria;
+    String idVeterinaria;
+    Propietario propietario;
 
 }
+
+
