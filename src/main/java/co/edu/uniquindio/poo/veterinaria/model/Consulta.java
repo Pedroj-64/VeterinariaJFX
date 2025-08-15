@@ -14,6 +14,12 @@ public class Consulta {
     private String tratamiento;
     private LocalDate fecha;
 
+    /**
+     * Genera un resumen en formato de texto con los datos principales
+     * de la consulta.
+     * @return Resumen con fecha, mascota, veterinario, diagnóstico y tratamiento.
+     */
+    
     public String getResumen() {
         return String.format("Consulta del %s%nMascota: %s%nVeterinario: %s%nDiagnóstico: %s%nTratamiento: %s",
             fecha, cita.getMascota().getNombre(), 

@@ -9,6 +9,12 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+
+/**
+ * Clase de  una cita veterinaria de una mascota con un veterinario.
+ * Contiene la fecha, motivo, estado y una consulta asociada a la cita.
+ */
+
 public class Cita {
     private String id;
     private Mascota mascota;
@@ -18,6 +24,12 @@ public class Cita {
     @Builder.Default
     private EstadoCita estado = EstadoCita.PENDIENTE;
     private Consulta consulta;
+
+
+    /*
+     * Agrega una consulta médica a la cita actual, registrando diagnóstico,
+     * tratamiento y fecha. Al hacerlo, el estado de la cita cambia a COMPLETADA.
+     * */
 
     public void agregarConsulta(String diagnostico, String tratamiento) {
         this.consulta = Consulta.builder()
@@ -29,15 +41,24 @@ public class Cita {
         this.estado = EstadoCita.COMPLETADA;
     }
 
+    /*
+     * Verifica si la cita se encuentra en estado pendiente.
+     * @return true si la cita está pendiente, false en caso contrario.
+     */
     public boolean estaPendiente() {
         return estado == EstadoCita.PENDIENTE;
     }
 
+    /*
+     * Cancela la cita, cambiando su estado a cANCELADA.
+     */
     public void cancelar() {
         this.estado = EstadoCita.CANCELADA;
     }
 }
-
+/*
+ * Enum que representa los posibles estados de una cita veterinaria.
+ */
 enum EstadoCita {
     PENDIENTE,
     COMPLETADA,
