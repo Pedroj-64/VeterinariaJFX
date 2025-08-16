@@ -23,6 +23,10 @@ public class Veterinario {
     @Builder.Default
     private Map<LocalDate, Set<LocalTime>> horariosDisponibles = new HashMap<>();
 
+/**
+ * Agrega una cita al veterinario
+ * @param cita
+ */
     public void agregarCita(Cita cita) {
         citas.add(cita);
         // Al agregar una cita, removemos ese horario de los disponibles
@@ -30,6 +34,11 @@ public class Veterinario {
         ocuparHorario(fechaHora.toLocalDate(), fechaHora.toLocalTime());
     }
 
+    /**
+ * Obtiene las citas programadas para una fecha específica
+ * @param fecha
+ * @return
+ */
     public List<Cita> obtenerCitasPorFecha(LocalDate fecha) {
         return citas.stream()
             .filter(cita -> cita.getFechaHora().toLocalDate().equals(fecha))
@@ -50,6 +59,10 @@ public class Veterinario {
             .collect(Collectors.toList());
     }
 
+    /**
+     * Inicializar los horarios disponibles par un día en específico
+     * @param fecha
+     */
     private void inicializarHorariosDelDia(LocalDate fecha) {
         Set<LocalTime> horariosDia = new HashSet<>();
         // Horarios de 8 AM a 4 PM
@@ -65,6 +78,8 @@ public class Veterinario {
 
     /**
      * Verifica si un horario específico está disponible
+     * @param fecha La fecha a verificar
+     * @param hora La hora a verificar
      */
     public boolean estaDisponible(LocalDate fecha, LocalTime hora) {
         return getHorariosDisponibles(fecha).contains(hora);
@@ -78,7 +93,11 @@ public class Veterinario {
         Set<LocalTime> horarios = horariosDisponibles.computeIfAbsent(fecha, k -> new HashSet<>());
         return horarios.remove(hora);
     }
-
+    /**
+     * Obtiene todas las consultas realizadas por el veterinario
+     * a través de las citas que ha atendido.
+     * @return Lista de las consultas realizadas
+     */
     public List<Consulta> obtenerConsultasRealizadas() {
         return citas.stream()
             .map(Cita::getConsulta)
